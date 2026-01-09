@@ -1,8 +1,11 @@
+import { Navbar, Welcome } from "#components"
+
 function App() {
   return (
-    <div>
-      Hello
-    </div>
+    <main>
+      <Navbar />
+      <Welcome />
+    </main>
   )
 }
 
