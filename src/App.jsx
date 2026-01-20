@@ -1,4 +1,4 @@
-import { Dock, Navbar, Welcome } from "#components"
+import { Dock, Home, Navbar, Welcome } from "#components"
 import { Resume, Safari, Terminal, Finder, Text, Image, Contact } from "#windows";
 
 import Draggable from "gsap/Draggable"
@@ -21,6 +21,9 @@ function App() {
       <Text />
       <Image />
       <Contact />
+
+      {/* home screen folder */}
+      <Home />
     </main>
   )
 }
