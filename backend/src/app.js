@@ -4,6 +4,7 @@
 
 import cors from "cors";
 import express from "express";
+import routes from "./routes/index.js";
 
 const app = express();
 
@@ -14,6 +15,9 @@ app.use(cors({
 
 // Body parser middleware
 app.use(express.json());
+
+// Use routes
+app.use("/api", routes);
 
 // 404 fallback
 app.use((req, res) => res.status(404).json({ error: "Not found" }));
