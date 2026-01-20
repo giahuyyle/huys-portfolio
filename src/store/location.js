@@ -7,8 +7,12 @@ const DEFAULT_LOCATION = locations.work;
 const useLocationStore = create(immer((set) => ({
     activeLocation: DEFAULT_LOCATION,
 
-    setActiveLocation: (location = null) => set((state) => {
-        state.activeLocation = location ?? DEFAULT_LOCATION;
+    // require explicit argument, ignore undefined calls
+    setActiveLocation: (location) => set((state) => {
+        if (location === undefined) return;
+
+        // allow explicit null if intended
+        state.activeLocation = location;
     }),
 
     resetActiveLocation: () => set((state) => {
