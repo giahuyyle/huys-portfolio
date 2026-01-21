@@ -129,28 +129,28 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/TalhaShahidKhan",
+    link: "https://github.com/giahuyyle",
   },
   {
     id: 2,
     text: "Portfolio",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://talhashahidkhan.vercel.app/",
+    link: "",
   },
   {
     id: 3,
     text: "Twitter/X",
     icon: "/icons/twitter.svg",
     bg: "#ff866b",
-    link: "https://x.com/TSKhan_5429",
+    link: "",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/in/talha-shahid-khan",
+    link: "https://www.linkedin.com/in/huylegia",
   },
 ];
 
