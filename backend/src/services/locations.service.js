@@ -6,8 +6,9 @@ function normalize(doc) {
   return { id: _id?.toString?.(), ...rest };
 }
 
-export async function getSettings() {
+export async function getLocations(filter = {}) {
   const db = getDb();
-  const settings = await db.collection("settings").findOne({});
-  return normalize(settings) || {};
+  const col = db.collection("locations");
+  const docs = await col.find(filter).toArray();
+  return docs.map(normalize);
 }
