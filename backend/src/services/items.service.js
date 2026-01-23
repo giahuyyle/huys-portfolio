@@ -12,19 +12,18 @@ export async function getItems(filter = {}) {
     return items.map(({ _id, ...rest }) => ({ id: _id?.toString?.(), ...rest }));
 };
 
-export async function getItemById(id) {
+export async function getItemByKey(key) {
   const db = getDb();
   const col = db.collection("items");
 
-  // try find by string id field first
-  let doc = await col.findOne({ id });
-  if (!doc) {
-    // fallback to ObjectId if valid
-    if (ObjectId.isValid(id)) {
-      doc = await col.findOne({ _id: new ObjectId(id) });
-    }
-  }
+  // find by custom key field
+  const doc = await col.findOne({ key });
   if (!doc) return null;
+
   const { _id, ...rest } = doc;
-  return { id: _id?.toString?.() || id, ...rest };
+  return {
+    id: _id?.toString?.(),
+    key,
+    ...rest,
+  };
 }
