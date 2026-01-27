@@ -10,7 +10,8 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-    origin: ['http://localhost:5173', "*"], // for local testing only, TODO: update for production
+    origin: ['http://localhost:5173', 
+            process.env.FRONTEND_URL || ''],
 }));
 
 // Body parser middleware

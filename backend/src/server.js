@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 
 import { connectMongo, closeMongo } from "./db/mongo.js";
 
+// LOCAL SERVER ONLY
+
 // Load environment variables
 dotenv.config();
 
