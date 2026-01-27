@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import React from 'react'
+import { useItemsStore } from "#store/items";
+
 import WindowWrapper from "#hoc/WindowWrapper";
 import { WindowControls } from "#components";
 import { Download } from "lucide-react";
@@ -11,12 +15,26 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const Resume = () => {
+    const { getByKey, loadAll } = useItemsStore();
+    const [ resumeUrl, setResumeUrl ] = useState("");
+
+    const openResume = async () => {
+        const data = await getByKey("resume");
+        const url = data?.resumeUrl || "files/Huy-Le-Resume.pdf";
+        setResumeUrl(url);
+    };
+
+    useEffect(() => {
+        loadAll();
+        openResume();
+    }, [loadAll]);
+
     return (
         <>
             <div id="window-header">
                 <WindowControls target="resume" />
                 <h2>
-                    Resume.pdf
+                    Huy-Le-Resume.pdf
                 </h2>
 
                 <a href="files/Huy-Le-Resume.pdf" download className="cursor-pointer" title="Download Resume">
@@ -25,7 +43,7 @@ const Resume = () => {
             </div>
 
             <Document
-                file="files/Huy-Le-Resume.pdf"
+                file={resumeUrl}
             >
                 <Page
                     pageNumber={1}

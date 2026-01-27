@@ -1,11 +1,25 @@
+import { useEffect, useState } from "react";
+import { useItemsStore } from "#store/items";
 import { WindowControls } from "#components";
-import { techStack } from "#constants";
 import WindowWrapper from "#hoc/WindowWrapper";
 import { Check, Flag } from "lucide-react";
 
 const randomTime = Math.trunc(Math.random() * 60);
 
 const Terminal = () => {
+    const { getByKey, loadAll } = useItemsStore();
+    const [ techStack, setTechStack ] = useState([]);
+
+    const openStack = async () => {
+        const data = await getByKey("techStack");
+        setTechStack(data.techStack);
+    };
+
+    useEffect(() => {
+        loadAll();
+        openStack();
+    }, [loadAll]);
+
     return (
         <>
             <div id="window-header">
