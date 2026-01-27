@@ -13,7 +13,6 @@ const Terminal = () => {
     const openStack = async () => {
         const data = await getByKey("techStack");
         setTechStack(data.techStack);
-        console.log(data)
     };
 
     useEffect(() => {
