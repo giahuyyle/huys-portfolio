@@ -1,8 +1,22 @@
 import { WindowControls } from "#components";
-import { socials } from "#constants";
+import { useItemsStore } from "#store/items";
 import WindowWrapper from "#hoc/WindowWrapper";
+import { useEffect, useState } from "react";
 
 const Contact = () => {
+  const { getByKey, loadAll } = useItemsStore();
+  const [ socials, setSocials ] = useState([]);
+
+  const openSocials = async () => {
+      const data = await getByKey("socials");
+      setSocials(data.socials);
+  };
+
+  useEffect(() => {
+      loadAll();
+      openSocials();
+  }, [loadAll]);
+
   return (
     <>
       <div id="window-header">
@@ -22,7 +36,7 @@ const Contact = () => {
           {socials.map(({ id, bg, link, icon, text }) => (
             <li key={id} style={{ backgroundColor: bg }}>
               <a
-                href=""
+                href={link}
                 target="_blank"
                 rel="noopener noreferrer"
                 title={text}
