@@ -7,7 +7,7 @@ import { Check, Flag } from "lucide-react";
 const randomTime = Math.trunc(Math.random() * 60);
 
 const Terminal = () => {
-    const { items, getByKey, loadAll } = useItemsStore();
+    const { getByKey, loadAll } = useItemsStore();
     const [ techStack, setTechStack ] = useState([]);
 
     const openStack = async () => {
