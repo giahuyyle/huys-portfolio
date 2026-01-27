@@ -8,6 +8,9 @@ export async function getItems(filter = {}) {
 
     // get all items
     const items = await itemsCollection.find(filter).toArray();
+
+    console.log(`[items.service] fetched ${items.length} items from database with filter:`, filter);
+
     // normalize ids
     return items.map(({ _id, ...rest }) => ({ id: _id?.toString?.(), ...rest }));
 };
